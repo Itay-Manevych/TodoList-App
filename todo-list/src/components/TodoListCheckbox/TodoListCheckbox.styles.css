@@ -1,0 +1,16 @@
+.checkbox{
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 1rem;
+    border-style: solid;
+    border-color: hsl(234, 39%, 85%);
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    border-style: none;
+    background-image: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))
+    
+}
