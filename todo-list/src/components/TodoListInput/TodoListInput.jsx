@@ -6,7 +6,7 @@ function TodoListInput(){
     return (
         <div className="inputField">
             <TodoListCheckbox/>
-            <p className="inputText">Create a new todo...</p>
+            <input type="text" placeholder="Create a todo..." className="inputText"></input>
         </div>
     );
 }
