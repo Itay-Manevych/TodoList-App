@@ -2,14 +2,14 @@ import React from "react";
 import "./TodoListCheckbox.styles.css"
 import tickMark from "../../assests/icon-check.svg"
 
-function TodoListCheckbox(){
+function TodoListCheckbox({isCompleted, setIsCompleted}){
     return (
         <div>
             <button style={{
-                // backgroundImage: "linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%))",
-                // borderStyle : "none"
+                backgroundImage: isCompleted ? "linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%))" : "background-image: none",
+                borderStyle : isCompleted ? "none" : "solid"
             }} className="checkbox">
-                {/* {<img src={tickMark}/>} */}
+                {isCompleted && <img src={tickMark}/>}
             </button>
         </div>
     );
