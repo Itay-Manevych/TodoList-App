@@ -2,27 +2,33 @@ import React,{useState, useEffect} from "react";
 import "./TodoListInput.styles.css"
 import TodoListCheckbox from "../TodoListCheckbox/TodoListCheckbox";
 
-function TodoListInput({task,tasks,setTasks}){
-    const [taskName, setTaskName] = useState(task.name);
-    const [isCompleted, setIsCompleted] = useState(task.isCompleted);
+function TodoListInput({task,tasks,setTasks,darkMode}){
 
-    useEffect(()=>{
-        const updatedTasks = tasks.filter((task_)=>task_.id === task.id).push({name: taskName, isCompleted: isCompleted, id:task.id})    
+    const onInputChangeHandler=(event)=>{
+        const updatedTasks = tasks.map((_task)=>{
+            if(_task.id !== task.id) return _task
+            return { name: event.target.value, isCompleted: task.isCompleted, id:task.id };
+        })  
         setTasks(updatedTasks);
-    },[taskName,isCompleted])
-
-    const onChangeHandler=(event)=>{
-        setTaskName(event.target.value);
     }
 
-    const onClickHandler=(event)=>{
-        setIsCompleted(true);
+    const onCheckboxChangeHandler=()=>{
+        const updatedTasks = tasks.map((_task)=>{
+            if(_task.id !== task.id) return _task
+            return { name: task.name, isCompleted: !task.isCompleted, id:task.id };
+        })  
+        setTasks(updatedTasks);
     }
 
     return (
-        <div className="inputField">
-            <TodoListCheckbox isCompleted={isCompleted} setIsCompleted={setIsCompleted}/>
-            <input type="text" onChange={onChangeHandler} onClick={onClickHandler} placeholder="Create a todo..." className="inputText"></input>
+        <div className="inputField" style={{
+            backgroundColor: darkMode ? "hsl(235, 24%, 19%)" : "hsl(236, 33%, 92%)"
+        }}>
+            <TodoListCheckbox isCompleted={task.isCompleted} setIsCompleted={onCheckboxChangeHandler}/>
+            <input type="text" onChange={onInputChangeHandler} value={task.name} className="inputText" style={{
+                backgroundColor: darkMode ? "hsl(235, 24%, 19%)" : "hsl(236, 33%, 92%)",
+                color: darkMode ? "hsl(234, 39%, 85%)" : "hsl(235, 21%, 11%)"
+            }}></input>
         </div>
     );
 }

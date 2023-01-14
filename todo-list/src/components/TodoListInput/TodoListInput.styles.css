@@ -11,21 +11,3 @@
     gap: 1rem;
     background-color: hsl(235, 24%, 19%);
 }
-
-.inputText{
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1.5rem;
-    color: hsl(234, 39%, 85%);
-    background-color: hsl(235, 24%, 19%);
-    box-shadow: none;
-    border: 0;
-}
-
-.inputText::placeholder{
-    color: hsl(234, 39%, 85%);
-}
-
-.inputText:focus{
-    outline:none;
-}

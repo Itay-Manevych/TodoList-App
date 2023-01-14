@@ -1,0 +1,7 @@
+.todoTaskList{
+    width: 100%;
+}
+
+.todoTaskList >*{
+    border-bottom: 0.1rem solid hsl(234, 39%, 85%);
+}

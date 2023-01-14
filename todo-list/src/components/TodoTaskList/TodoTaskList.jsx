@@ -1,16 +1,12 @@
-import React,{useState} from "react";
+import React from "react";
 import TodoListInput from "../TodoListInput/TodoListInput";
+import "./TodoTaskList.styles.css"
 
-function TodoTaskList(){
-    const [tasks, setTasks] = useState([
-        {name: "work with alon filler", isCompleted:true, id:0},
-        {name: "miguel", isCompleted:false, id:1}
-    ]);
-    console.log(tasks);
+function TodoTaskList({ tasks,setTasks,darkMode }){
     return(
-        <div>
+        <div className="todoTaskList">
             {tasks.map((task, index)=>{
-                return <TodoListInput task={task} tasks={tasks} setTasks={setTasks} key={index}/>
+                return <TodoListInput task={task} tasks={tasks} setTasks={setTasks} darkMode={darkMode} key={index}/>
             })}
         </div>
     )
