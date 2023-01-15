@@ -15,6 +15,10 @@ function CreateTodoItem({ tasks, setTasks, darkMode }){
         setTaskName(event.target.value);
     }
 
+    const onKeyDownHandler= (event)=>{
+        if(event.key === "Enter")
+            onClickHandler();
+    }
     return (
         <div className="createTodoField" style={{
             backgroundColor: darkMode ? "hsl(235, 24%, 19%)" : "hsl(236, 33%, 92%)",
@@ -22,7 +26,7 @@ function CreateTodoItem({ tasks, setTasks, darkMode }){
             <button className="createNewTodoItem" onClick={onClickHandler} style={{
                 background: "none"
             }}></button>
-            <input type="text" onChange={onChangeHandler} value={taskName} placeholder="Create a new todo..." className="inputText" style={{
+            <input type="text" onChange={onChangeHandler} onKeyDown={onKeyDownHandler} value={taskName} placeholder="Create a new todo..." className="inputText" style={{
                 backgroundColor: darkMode ? "hsl(235, 24%, 19%)" : "hsl(236, 33%, 92%)",
                 color: darkMode ? "hsl(234, 39%, 85%)" : "hsl(235, 21%, 11%)" 
             }}></input>
